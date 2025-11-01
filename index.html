@@ -13,11 +13,11 @@
         }
 
         :root {
-            --primary-color: #1a3a52;
-            --secondary-color: #2c5f7f;
-            --accent-color: #d4af37;
-            --light-bg: #f5f5f5;
-            --white: #ffffff;
+           --primary-color: #333a40;   /* A strong, dark charcoal grey instead of blue */
+  --secondary-color: #5a6872; /* A softer, complementary grey */
+  --accent-color: #d4af37;   /* This gold is good, let's keep it! */
+  --light-bg: #f8f9fa;      /* A very light, clean grey */
+  --white: #ffffff;
             --text-dark: #222222;
             --text-light: #666666;
             --border-color: #dddddd;
@@ -79,6 +79,22 @@
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+        .section-title {
+  position: relative;
+  padding-bottom: 20px; /* Make space for the line */
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 80px;  /* Width of the "brush stroke" */
+  height: 4px;  /* Thickness of the "brush stroke" */
+  background: var(--accent-color);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
         .hero p {
             font-size: clamp(1.2rem, 3vw, 1.8rem);
