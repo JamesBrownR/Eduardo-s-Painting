@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo's Painting LLC - Professional Painting Services in Oklahoma City</title>
+    <meta name="description" content="Professional painting services in Oklahoma City. Available 24/7. Quality workmanship guaranteed.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a3a52;
+            --secondary-color: #2c5f7f;
+            --accent-color: #d4af37;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+            --text-dark: #222222;
+            --text-light: #666666;
+            --border-color: #dddddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Top Contact Bar */
+        .top-bar {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .top-bar a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .top-bar a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section - Full Screen */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 20px;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .hero.has-image {
+            background: linear-gradient(rgba(26, 58, 82, 0.7), rgba(44, 95, 127, 0.7)), url('Eduardos-Painting.png') center/cover no-repeat;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 40px;
+            max-width: 800px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background: #c49b2e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* Services Section */
+        #services {
+            background: var(--light-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Reviews Section */
+        #reviews {
+            background: var(--white);
+        }
+
+        .reviews-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--light-bg);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .stars {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .review-body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .show-more-btn {
+            display: block;
+            margin: 30px auto 0;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .show-more-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--light-bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 35px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .contact-info {
+            background: var(--white);
+            padding: 35px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .info-item p,
+        .info-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .info-item a:hover {
+            color: var(--primary-color);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            color: var(--text-light);
+        }
+
+        /* Map Section */
+        #map {
+            background: var(--white);
+        }
+
+        .map-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        /* Square Payment Section */
+        #payment {
+            background: var(--light-bg);
+            text-align: center;
+        }
+
+        .square-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--white);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .square-link {
+            display: inline-block;
+            padding: 20px 40px;
+            background: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .square-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .top-bar {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .hero {
+                margin-top: 45px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .map-container iframe {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Contact Bar -->
+    <div class="top-bar">
+        <a href="tel:+14055106039">Call Now: (405) 510-6039</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Eduardo's Painting LLC</h1>
+        <p>Professional Painting Services You Can Trust</p>
+        <div class="hero-buttons">
+            <a href="tel:+14055106039" class="btn btn-primary">Call Now</a>
+            <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Quality painting services for residential and commercial properties</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Interior Painting</h3>
+                    <p>Transform your indoor spaces with professional interior painting. We handle everything from preparation to final touches with precision and care.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Exterior Painting</h3>
+                    <p>Protect and beautify your property's exterior with high-quality paint and expert application techniques that withstand the elements.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Commercial Painting</h3>
+                    <p>Professional painting services for businesses, offices, and commercial properties. Minimal disruption, maximum quality.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Residential Painting</h3>
+                    <p>Complete home painting solutions tailored to your style and budget. We treat your home with the care it deserves.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Color Consultation</h3>
+                    <p>Not sure which colors to choose? Our experts provide professional color consultation to help you make the perfect selection.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Surface Preparation</h3>
+                    <p>Proper preparation is key to a lasting finish. We ensure all surfaces are properly prepared for optimal paint adhesion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p class="section-subtitle">Five-star service, every time</p>
+            <div class="reviews-container">
+                <div id="reviews-list"></div>
+                <button id="show-more-reviews" class="show-more-btn hidden"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get Your Free Quote</h2>
+            <p class="section-subtitle">Available 24/7 to serve you</p>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Project Details *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h3>Phone</h3>
+                        <p><a href="tel:+14055106039">(405) 510-6039</a></p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Address</h3>
+                        <p>5824 S Western Ave<br>Oklahoma City, OK 73109</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Hours</h3>
+                        <ul class="hours-list">
+                            <li><span>Monday</span><span>Open 24 hours</span></li>
+                            <li><span>Tuesday</span><span>Open 24 hours</span></li>
+                            <li><span>Wednesday</span><span>Open 24 hours</span></li>
+                            <li><span>Thursday</span><span>Open 24 hours</span></li>
+                            <li><span>Friday</span><span>Open 24 hours</span></li>
+                            <li><span>Saturday</span><span>Open 24 hours</span></li>
+                            <li><span>Sunday</span><span>Open 24 hours</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <p class="section-subtitle">Serving Oklahoma City and surrounding areas</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3252.659833022588!2d-97.57413728850534!3d35.38889197256913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x26a5e32fc41ac74b%3A0xde1bd3e279496684!2sEduardo%E2%80%99s%20Painting%20LLC!5e0!3m2!1sen!2sus!4v1761956448815!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section id="payment">
+        <div class="container">
+            <h2 class="section-title">Convenient Payment Options</h2>
+            <p class="section-subtitle">Pay securely with Square</p>
+            <div class="square-container">
+                <p style="color: var(--text-light); margin-bottom: 20px;">We accept all major payment methods through our secure Square payment system.</p>
+                <a href="https://square.link/u/YOUR_LOCATION_ID" class="square-link" target="_blank" rel="noopener">Pay with Square</a>
+                <p style="color: var(--text-light); margin-top: 20px; font-size: 0.9rem;">Replace YOUR_LOCATION_ID in the code with your actual Square location ID</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/Eduardos-Painting-Landscape-148826207345181/" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+                <a href="https://www.google.com/maps/place/Eduardo%E2%80%99s+Painting+LLC/@35.388892,-97.5741373,17z/data=!3m1!5s0x87b2124b8c19a54b:0x980cb6d9afaf7d3f!4m16!1m9!3m8!1s0x26a5e32fc41ac74b:0xde1bd3e279496684!2sEduardo%E2%80%99s+Painting+LLC!8m2!3d35.388892!4d-97.571557!9m1!1b1!16s%2Fg%2F11rxw85w_l!3m5!1s0x26a5e32fc41ac74b:0xde1bd3e279496684!8m2!3d35.388892!4d-97.571557!16s%2Fg%2F11rxw85w_l?entry=ttu&g_ep=EgoyMDI1MTAyOS4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" aria-label="Google">Google</a>
+                <a href="https://github.com/JamesBrownR/Eduardo-s-Painting" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>&copy; 2025 Eduardo's Painting LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Reviews Data - ADD YOUR REVIEWS HERE
+        const reviews = [
+            { name: "Customer 1", rating: 5, body: "" },
+            { name: "Customer 2", rating: 5, body: "" },
+            { name: "Customer 3", rating: 5, body: "" },
+            { name: "Customer 4", rating: 5, body: "" },
+            { name: "Customer 5", rating: 5, body: "" },
+            { name: "Customer 6", rating: 5, body: "" }
+        ];
+
+        const reviewsPerPage = 6;
+        let currentPage = 1;
+
+        function renderReviews() {
+            const reviewsList = document.getElementById('reviews-list');
+            const showMoreBtn = document.getElementById('show-more-reviews');
+            const reviewsToShow = reviews.slice(0, currentPage * reviewsPerPage);
+            
+            reviewsList.innerHTML = reviewsToShow.map(review => `
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="reviewer-name">${review.name}</span>
+                        <span class="stars">${'★'.repeat(review.rating)}</span>
+                    </div>
+                    ${review.body ? `<p class="review-body">${review.body}</p>` : ''}
+                </div>
+            `).join('');
+
+            const remainingReviews = reviews.length - (currentPage * reviewsPerPage);
+            if (remainingReviews > 0) {
+                showMoreBtn.textContent = `Show ${Math.min(remainingReviews, reviewsPerPage)} more (total ${remainingReviews})`;
+                showMoreBtn.classList.remove('hidden');
+            } else {
+                showMoreBtn.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('show-more-reviews').addEventListener('click', function() {
+            currentPage++;
+            renderReviews();
+        });
+
+        // Check if image exists and update hero background
+        const img = new Image();
+        img.onload = function() {
+            document.querySelector('.hero').classList.add('has-image');
+        };
+        img.src = 'Eduardos-Painting.png';
+
+        // Initialize reviews
+        renderReviews();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            // Form will submit to Formspree - replace YOUR_FORM_ID with your actual Formspree form ID
+            // Or implement your own form handling here
+        });
+    </script>
+</body>
+</html>
